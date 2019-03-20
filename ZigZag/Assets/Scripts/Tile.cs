@@ -9,13 +9,11 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    void Start()
+    private void OnTriggerExit(Collider other)
     {
-
-    }
-
-    void Update()
-    {
-
+        if (other.tag == "Player")
+        {
+            TileManager.instance.SpawnTile();
+        }
     }
 }

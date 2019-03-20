@@ -9,19 +9,31 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
+    public static TileManager instance;
+
     public GameObject[] tiles;
 
     public GameObject currentTile;
 
-    private void Start()
+    private void Awake()
     {
-        for (int i = 0; i < 13; i++)
+        if (instance == null)
         {
-            SpawnTile();
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
     }
 
-    private void SpawnTile()
+    private void Start()
+    {
+        for (int i = 0; i < 50; i++)
+            instance.SpawnTile();
+    }
+
+    public void SpawnTile()
     {
         int index = Random.Range(0, 2);
         currentTile = (GameObject)Instantiate(tiles[index], currentTile.transform.GetChild(0).GetChild(index).position, Quaternion.identity);
