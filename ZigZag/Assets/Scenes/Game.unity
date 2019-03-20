@@ -282,7 +282,7 @@ PrefabInstance:
     - target: {fileID: 242119376556457128, guid: ecdd0e6627d485f4ba947a28d96cf18e,
         type: 3}
       propertyPath: m_Name
-      value: Dummy Tile
+      value: TopTile
       objectReference: {fileID: 0}
     - target: {fileID: 242119376556457131, guid: ecdd0e6627d485f4ba947a28d96cf18e,
         type: 3}

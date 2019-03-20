@@ -14,6 +14,26 @@ public class Tile : MonoBehaviour
         if (other.tag == "Player")
         {
             TileManager.instance.SpawnTile();
+            StartCoroutine(Fall());
+        }
+    }
+
+    IEnumerator Fall()
+    {
+        yield return new WaitForSeconds(0.7f);
+        GetComponent<Rigidbody>().isKinematic = false;
+
+        yield return new WaitForSeconds(1);
+
+        GetComponent<Rigidbody>().isKinematic = true;
+
+        if (name == "TopTile")
+        {
+            TileManager.instance.AddTopTile(gameObject);
+        }
+        else
+        {
+            TileManager.instance.AddLeftTile(gameObject);
         }
     }
 }

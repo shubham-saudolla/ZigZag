@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 242119376556457131}
   - component: {fileID: 1002884643}
   - component: {fileID: 3255506796605874123}
+  - component: {fileID: 3929449475058583563}
   m_Layer: 0
   m_Name: TopTile
   m_TagString: Untagged
@@ -118,6 +119,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b520d1df29ca0fc4684774097caf06ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &3929449475058583563
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242119376556457128}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
 --- !u!1 &242119376678981014
 GameObject:
   m_ObjectHideFlags: 0
