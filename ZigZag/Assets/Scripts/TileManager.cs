@@ -9,27 +9,21 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
-    public GameObject leftTile;
-    public GameObject topTile;
+    public GameObject[] tiles;
 
     public GameObject currentTile;
 
     private void Start()
     {
-        SpawnTopTile();
-        SpawnTopTile();
-        SpawnLeftTile();
+        for (int i = 0; i < 13; i++)
+        {
+            SpawnTile();
+        }
     }
 
-    private void SpawnTopTile()
+    private void SpawnTile()
     {
-        GameObject newTile = (GameObject)Instantiate(topTile, currentTile.transform.GetChild(0).GetChild(0).position, Quaternion.identity);
-        currentTile = newTile;
-    }
-
-    private void SpawnLeftTile()
-    {
-        GameObject newTile = (GameObject)Instantiate(leftTile, currentTile.transform.GetChild(0).GetChild(1).position, Quaternion.identity);
-        currentTile = newTile;
+        int index = Random.Range(0, 2);
+        currentTile = (GameObject)Instantiate(tiles[index], currentTile.transform.GetChild(0).GetChild(index).position, Quaternion.identity);
     }
 }

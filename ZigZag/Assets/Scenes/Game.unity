@@ -282,7 +282,7 @@ PrefabInstance:
     - target: {fileID: 242119376556457128, guid: ecdd0e6627d485f4ba947a28d96cf18e,
         type: 3}
       propertyPath: m_Name
-      value: TopTile
+      value: Dummy Tile
       objectReference: {fileID: 0}
     - target: {fileID: 242119376556457131, guid: ecdd0e6627d485f4ba947a28d96cf18e,
         type: 3}
@@ -797,9 +797,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d16dfefd34565240b98539007e1b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftTile: {fileID: 8929240189817223526, guid: d4b0734abc5b4024d96246af981f794d,
-    type: 3}
-  topTile: {fileID: 242119376556457128, guid: ecdd0e6627d485f4ba947a28d96cf18e, type: 3}
+  tiles:
+  - {fileID: 242119376556457128, guid: ecdd0e6627d485f4ba947a28d96cf18e, type: 3}
+  - {fileID: 8929240189817223526, guid: d4b0734abc5b4024d96246af981f794d, type: 3}
   currentTile: {fileID: 1002884642}
 --- !u!1 &2024332705
 GameObject:
