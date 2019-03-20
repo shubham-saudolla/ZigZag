@@ -47,8 +47,8 @@ public class TileManager : MonoBehaviour
             topTiles.Peek().SetActive(false);
             leftTiles.Peek().SetActive(false);
 
-            topTiles.Peek().name = "TopTile";
-            leftTiles.Peek().name = "LeftTile";
+            topTiles.Peek().name = "Top";
+            leftTiles.Peek().name = "Left";
         }
     }
 

@@ -27,7 +27,7 @@ public class Tile : MonoBehaviour
 
         GetComponent<Rigidbody>().isKinematic = true;
 
-        if (name == "TopTile")
+        if (name == "Top")
         {
             TileManager.instance.AddTopTile(gameObject);
         }
