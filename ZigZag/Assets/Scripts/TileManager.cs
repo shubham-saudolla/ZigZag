@@ -11,7 +11,8 @@ public class TileManager : MonoBehaviour
 {
     public static TileManager instance;
 
-    public GameObject[] tiles;
+    public GameObject topTilePrefab;
+    public GameObject leftTilePrefab;
 
     public GameObject currentTile;
 
@@ -42,8 +43,8 @@ public class TileManager : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            _topTiles.Push(Instantiate(tiles[0]));
-            _leftTiles.Push(Instantiate(tiles[1]));
+            _topTiles.Push(Instantiate(topTilePrefab));
+            _leftTiles.Push(Instantiate(leftTilePrefab));
             _topTiles.Peek().SetActive(false);
             _leftTiles.Peek().SetActive(false);
         }
