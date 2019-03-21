@@ -9,29 +9,36 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    private Rigidbody _rb;
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
             TileManager.instance.SpawnTile();
-            StartCoroutine(Fall());
+            StartCoroutine(FallAndReplace());
         }
     }
 
-    IEnumerator Fall()
+    private IEnumerator FallAndReplace()
     {
-        yield return new WaitForSeconds(0.7f);
-        GetComponent<Rigidbody>().isKinematic = false;
+        yield return new WaitForSeconds(0.3f);
+        _rb.isKinematic = false;
 
         yield return new WaitForSeconds(1);
+        this.gameObject.SetActive(false);
+        _rb.isKinematic = true;
 
-        GetComponent<Rigidbody>().isKinematic = true;
-
-        if (name == "Top")
+        if (this.tag == "TopTile")
         {
             TileManager.instance.AddTopTile(gameObject);
         }
-        else
+        else if (this.tag == "LeftTile")
         {
             TileManager.instance.AddLeftTile(gameObject);
         }

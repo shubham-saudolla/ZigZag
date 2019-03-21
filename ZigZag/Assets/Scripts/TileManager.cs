@@ -15,8 +15,8 @@ public class TileManager : MonoBehaviour
 
     public GameObject currentTile;
 
-    public Stack<GameObject> topTiles = new Stack<GameObject>();
-    public Stack<GameObject> leftTiles = new Stack<GameObject>();
+    private Stack<GameObject> _topTiles = new Stack<GameObject>();
+    private Stack<GameObject> _leftTiles = new Stack<GameObject>();
 
     private void Awake()
     {
@@ -42,19 +42,16 @@ public class TileManager : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            topTiles.Push(Instantiate(tiles[0]));
-            leftTiles.Push(Instantiate(tiles[1]));
-            topTiles.Peek().SetActive(false);
-            leftTiles.Peek().SetActive(false);
-
-            topTiles.Peek().name = "Top";
-            leftTiles.Peek().name = "Left";
+            _topTiles.Push(Instantiate(tiles[0]));
+            _leftTiles.Push(Instantiate(tiles[1]));
+            _topTiles.Peek().SetActive(false);
+            _leftTiles.Peek().SetActive(false);
         }
     }
 
     public void SpawnTile()
     {
-        if (leftTiles.Count <= 0 || leftTiles.Count <= 0)
+        if (_leftTiles.Count <= 0 || _topTiles.Count <= 0)
         {
             CreateTiles(100);
         }
@@ -62,29 +59,27 @@ public class TileManager : MonoBehaviour
         int index = Random.Range(0, 2);
         if (index == 0)
         {
-            GameObject temp = topTiles.Pop();
+            GameObject temp = _topTiles.Pop();
             temp.SetActive(true);
-            temp.transform.position = currentTile.transform.GetChild(0).GetChild(0).position;
+            temp.transform.position = currentTile.transform.GetChild(0).GetChild(index).position;
             currentTile = temp;
         }
         else if (index == 1)
         {
-            GameObject temp = leftTiles.Pop();
+            GameObject temp = _leftTiles.Pop();
             temp.SetActive(true);
-            temp.transform.position = currentTile.transform.GetChild(0).GetChild(1).position;
+            temp.transform.position = currentTile.transform.GetChild(0).GetChild(index).position;
             currentTile = temp;
         }
     }
 
     public void AddTopTile(GameObject obj)
     {
-        topTiles.Push(obj);
-        topTiles.Peek().SetActive(false);
+        _topTiles.Push(obj);
     }
 
     public void AddLeftTile(GameObject obj)
     {
-        leftTiles.Push(obj);
-        topTiles.Peek().SetActive(false);
+        _leftTiles.Push(obj);
     }
 }

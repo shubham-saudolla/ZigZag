@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 3929449475058583563}
   m_Layer: 0
   m_Name: TopTile
-  m_TagString: Untagged
+  m_TagString: TopTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
