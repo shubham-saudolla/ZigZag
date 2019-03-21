@@ -383,6 +383,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 242119376678981011, guid: ecdd0e6627d485f4ba947a28d96cf18e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecdd0e6627d485f4ba947a28d96cf18e, type: 3}
 --- !u!1 &464124325
@@ -444,7 +449,7 @@ MeshRenderer:
   m_GameObject: {fileID: 464124325}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
