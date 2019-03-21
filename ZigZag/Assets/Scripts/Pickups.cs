@@ -9,10 +9,13 @@ using UnityEngine;
 
 public class Pickups : MonoBehaviour
 {
+    public GameObject burstParticlesPrefab;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            Instantiate(burstParticlesPrefab, transform.position, Quaternion.identity);
             this.gameObject.SetActive(false);
         }
     }

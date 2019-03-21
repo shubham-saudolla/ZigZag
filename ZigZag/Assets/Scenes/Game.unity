@@ -388,6 +388,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1729489114, guid: ecdd0e6627d485f4ba947a28d96cf18e, type: 3}
+      propertyPath: burstParticlesPrefab
+      value: 
+      objectReference: {fileID: 1548637156623692866, guid: 3dfbc634f25e20045a4f14955aae49eb,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecdd0e6627d485f4ba947a28d96cf18e, type: 3}
 --- !u!1 &464124325

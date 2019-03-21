@@ -104,6 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fc633d333f13e43851ae24dae7d982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  burstParticlesPrefab: {fileID: 1548637156623692866, guid: 3dfbc634f25e20045a4f14955aae49eb,
+    type: 3}
 --- !u!1 &242119375719150380
 GameObject:
   m_ObjectHideFlags: 0
