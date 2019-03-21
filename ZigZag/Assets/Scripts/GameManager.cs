@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public float slowDownFactor = 10f;
-    public float slowMotionTime = 1f;
+    public float slowMotionTime = 1.7f;
     public bool gameOver = false;
     public bool freezeTiles = false;
 
