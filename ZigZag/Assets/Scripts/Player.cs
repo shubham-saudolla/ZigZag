@@ -21,6 +21,13 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
+        if (transform.position.y <= 3.0f)
+        {
+            Debug.Log("You fell off");
+            Time.timeScale = 0;
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             if (dir == Vector3.forward)
