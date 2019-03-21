@@ -769,6 +769,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowDownFactor: 10
-  slowMotionTime: 1
+  slowMotionTime: 1.7
   gameOver: 0
   freezeTiles: 0
