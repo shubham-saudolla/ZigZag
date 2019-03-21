@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         _rb.isKinematic = false;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         this.gameObject.SetActive(false);
         _rb.isKinematic = true;
 

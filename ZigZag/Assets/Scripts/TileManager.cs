@@ -72,6 +72,12 @@ public class TileManager : MonoBehaviour
             temp.transform.position = currentTile.transform.GetChild(0).GetChild(index).position;
             currentTile = temp;
         }
+
+        int pickupIndex = Random.Range(0, 10);
+        if (pickupIndex == 0)
+        {
+            currentTile.transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 
     public void AddTopTile(GameObject obj)
