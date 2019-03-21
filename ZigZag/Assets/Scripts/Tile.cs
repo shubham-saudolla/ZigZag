@@ -16,6 +16,17 @@ public class Tile : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
+    private void FixedUpdate()
+    {
+        if (GameManager.instance.gameOver)
+        {
+            if (GameManager.instance.freezeTiles)
+            {
+                _rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
@@ -31,16 +42,23 @@ public class Tile : MonoBehaviour
         _rb.isKinematic = false;
 
         yield return new WaitForSeconds(3);
-        this.gameObject.SetActive(false);
-        _rb.isKinematic = true;
+        if (!GameManager.instance.freezeTiles)
+        {
+            this.gameObject.SetActive(false);
+            _rb.isKinematic = true;
 
-        if (this.tag == "TopTile")
-        {
-            TileManager.instance.AddTopTile(gameObject);
+            if (this.tag == "TopTile")
+            {
+                TileManager.instance.AddTopTile(gameObject);
+            }
+            else if (this.tag == "LeftTile")
+            {
+                TileManager.instance.AddLeftTile(gameObject);
+            }
         }
-        else if (this.tag == "LeftTile")
+        else
         {
-            TileManager.instance.AddLeftTile(gameObject);
+            _rb.isKinematic = true;
         }
     }
 }

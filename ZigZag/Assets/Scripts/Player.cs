@@ -16,15 +16,21 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        if (!GameManager.instance.gameOver)
+        {
+            Movement();
+        }
+        else
+        {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
     }
 
     private void Movement()
     {
         if (transform.position.y <= 3.0f)
         {
-            Debug.Log("You fell off");
-            Time.timeScale = 0;
+            GameManager.instance.EndGame();
             return;
         }
 
