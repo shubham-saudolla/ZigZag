@@ -37,11 +37,17 @@ public class UIManager : MonoBehaviour
             scoreBoard.GetComponent<Animator>().SetTrigger("ScoreFadeIn");
             TapButton.GetComponent<Animator>().SetTrigger("TapButtonFade");
             Title.GetComponent<Animator>().SetTrigger("TitleFade");
-            StartCoroutine(FadeInToGame());
+            StartCoroutine(FadeOutToGame());
         }
     }
 
-    private IEnumerator FadeInToGame()
+    public void ArriveIntoGame()
+    {
+        Title.GetComponent<Animator>().SetTrigger("TitleArrive");
+        TapButton.GetComponent<Animator>().SetTrigger("TapButtonArrive");
+    }
+
+    private IEnumerator FadeOutToGame()
     {
         yield return new WaitForSeconds(1.0f);
         GameManager.instance.gameOver = false;

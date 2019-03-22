@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         freezeTiles = true;
         PlayerPrefs.GetInt("TopScore", 0);
         gameEnded = false;
+        UIManager.instance.ArriveIntoGame();
     }
 
     private void Update()
