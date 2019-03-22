@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TopTile
   - LeftTile
+  - StartTile
   layers:
   - Default
   - TransparentFX

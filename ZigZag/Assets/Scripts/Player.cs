@@ -11,8 +11,14 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 9.0f;
+    private Rigidbody _playerRb;
 
     public Vector3 dir;
+
+    private void Awake()
+    {
+        _playerRb = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
@@ -22,18 +28,17 @@ public class Player : MonoBehaviour
         }
         else
         {
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
+        }
+
+        if (GameManager.instance.freezeTiles)
+        {
+            _playerRb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 
     private void Movement()
     {
-        if (transform.position.y <= 3.0f)
-        {
-            GameManager.instance.EndGame();
-            return;
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
             if (dir == Vector3.forward)
@@ -47,5 +52,18 @@ public class Player : MonoBehaviour
         }
 
         transform.Translate(dir * _speed * Time.deltaTime);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "TopTile" || other.tag == "LeftTile" || other.tag == "StartTile")
+        {
+            RaycastHit hit;
+            Ray downRay = new Ray(transform.position, -Vector3.up);
+            if (!Physics.Raycast(downRay, out hit))
+            {
+                GameManager.instance.EndGame();
+            }
+        }
     }
 }
