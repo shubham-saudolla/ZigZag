@@ -15,6 +15,8 @@ public class Pickups : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            GameManager.instance.IncrementScore(2);
+
             Instantiate(burstParticlesPrefab, transform.position, Quaternion.identity);
             this.gameObject.SetActive(false);
         }

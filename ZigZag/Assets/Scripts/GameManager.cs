@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     public bool freezeTiles = false;
 
+    private int _score = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -28,15 +30,29 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         freezeTiles = false;
-        gameOver = false;
+        gameOver = true;
     }
 
     private void Update()
     {
+        if (gameOver)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                StartGame();
+            }
+        }
+
         if (freezeTiles)
         {
             ReloadLevel();
         }
+    }
+
+    public void StartGame()
+    {
+        gameOver = false;
+        _score = 0;
     }
 
     public void EndGame()
@@ -63,5 +79,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Game");
         }
+    }
+
+    public void IncrementScore(int increment)
+    {
+        _score += increment;
+        UIManager.instance.UpdateScoreText(this._score);
     }
 }

@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            GameManager.instance.IncrementScore(1);
+
             if (dir == Vector3.forward)
             {
                 dir = Vector3.left;
