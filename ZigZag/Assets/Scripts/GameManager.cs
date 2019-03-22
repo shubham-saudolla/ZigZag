@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public float slowMotionTime = 1.7f;
     public bool gameOver = false;
     public bool freezeTiles = false;
+    public bool gameEnded = false;
 
     private int _score = 0;
 
@@ -29,9 +30,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameOver = false;
-        freezeTiles = false;
+        gameOver = true;
+        freezeTiles = true;
         PlayerPrefs.GetInt("TopScore", 0);
+        gameEnded = false;
     }
 
     private void Update()
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         Time.fixedDeltaTime = Time.fixedDeltaTime * slowDownFactor;
         freezeTiles = true;
+        gameEnded = true;
     }
 
     private void ReloadLevel()

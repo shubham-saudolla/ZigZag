@@ -16,9 +16,9 @@ public class Tile : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (GameManager.instance.gameOver)
+        if (GameManager.instance.gameOver && GameManager.instance.freezeTiles && GameManager.instance.gameEnded)
         {
             if (GameManager.instance.freezeTiles)
             {
