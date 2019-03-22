@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public float slowDownFactor = 10f;
-    public float slowMotionTime = 1.7f;
+    public float slowMotionTime = 1f;
     public bool gameOver = false;
     public bool freezeTiles = false;
     public bool gameEnded = false;
@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
         Time.fixedDeltaTime = Time.fixedDeltaTime * slowDownFactor;
         freezeTiles = true;
         gameEnded = true;
+
+        UIManager.instance.ShowEndPanel();
     }
 
     private void ReloadLevel()

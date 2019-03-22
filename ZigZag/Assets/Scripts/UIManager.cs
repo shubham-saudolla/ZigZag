@@ -13,9 +13,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public GameObject Title;
+    public GameObject startPanel;
+    public GameObject endPanel;
+
+    public GameObject title;
     public TMP_Text scoreBoard;
-    public GameObject TapButton;
+    public GameObject tapButton;
 
     private void Awake()
     {
@@ -35,25 +38,29 @@ public class UIManager : MonoBehaviour
         if (GameManager.instance.gameOver && GameManager.instance.freezeTiles)
         {
             scoreBoard.GetComponent<Animator>().SetTrigger("ScoreFadeIn");
-            TapButton.GetComponent<Animator>().SetTrigger("TapButtonFade");
-            Title.GetComponent<Animator>().SetTrigger("TitleFade");
+            tapButton.GetComponent<Animator>().SetTrigger("TapButtonFade");
+            title.GetComponent<Animator>().SetTrigger("TitleFade");
             StartCoroutine(FadeOutToGame());
         }
     }
 
     public void ArriveIntoGame()
     {
-        Title.GetComponent<Animator>().SetTrigger("TitleArrive");
-        TapButton.GetComponent<Animator>().SetTrigger("TapButtonArrive");
+        title.GetComponent<Animator>().SetTrigger("TitleArrive");
+        tapButton.GetComponent<Animator>().SetTrigger("TapButtonArrive");
     }
 
     private IEnumerator FadeOutToGame()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         GameManager.instance.gameOver = false;
         GameManager.instance.freezeTiles = false;
-        TapButton.gameObject.SetActive(false);
-        Title.gameObject.SetActive(false);
+        startPanel.SetActive(false);
+    }
 
+    public void ShowEndPanel()
+    {
+        endPanel.SetActive(true);
+        scoreBoard.GetComponent<Animator>().SetTrigger("ScoreFadeOut");
     }
 }
