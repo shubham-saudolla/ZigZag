@@ -125,8 +125,8 @@ GameObject:
   - component: {fileID: 34442874}
   - component: {fileID: 34442873}
   - component: {fileID: 34442878}
-  - component: {fileID: 34442879}
   - component: {fileID: 34442877}
+  - component: {fileID: 34442879}
   m_Layer: 0
   m_Name: Start
   m_TagString: StartTile
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 34442872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b520d1df29ca0fc4684774097caf06ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 70af5babc7273a44c83cd7d70d069b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &170076733
