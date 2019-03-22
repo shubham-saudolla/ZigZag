@@ -937,7 +937,6 @@ MonoBehaviour:
   slowMotionTime: 1.7
   gameOver: 0
   freezeTiles: 0
-  timer: 0
 --- !u!1 &1870685960
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +949,7 @@ GameObject:
   - component: {fileID: 1870685963}
   - component: {fileID: 1870685962}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: ScoreBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(this.gameObject);
+
+        scoreText.gameObject.SetActive(false);
     }
 
     public void UpdateScoreText(int newScore)

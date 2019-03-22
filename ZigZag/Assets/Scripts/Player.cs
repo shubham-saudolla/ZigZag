@@ -26,10 +26,6 @@ public class Player : MonoBehaviour
         {
             Movement();
         }
-        else
-        {
-            _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
-        }
 
         if (GameManager.instance.freezeTiles)
         {
@@ -53,7 +49,8 @@ public class Player : MonoBehaviour
             }
         }
 
-        transform.Translate(dir * _speed * Time.deltaTime);
+        if (!GameManager.instance.gameOver)
+            transform.Translate(dir * _speed * Time.deltaTime);
     }
 
     private void OnTriggerExit(Collider other)
@@ -64,6 +61,7 @@ public class Player : MonoBehaviour
             Ray downRay = new Ray(transform.position, -Vector3.up);
             if (!Physics.Raycast(downRay, out hit))
             {
+                _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
                 GameManager.instance.EndGame();
             }
         }

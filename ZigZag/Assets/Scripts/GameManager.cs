@@ -29,21 +29,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        gameOver = false;
         freezeTiles = false;
-        gameOver = true;
+        PlayerPrefs.GetInt("TopScore", 0);
     }
 
     private void Update()
     {
-        if (gameOver)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                StartGame();
-            }
-        }
-
-        if (freezeTiles)
+        if (freezeTiles && gameOver)
         {
             ReloadLevel();
         }
@@ -58,6 +51,7 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         gameOver = true;
+        TopScore();
         StartCoroutine(SlowDownAndStop());
     }
 
@@ -75,9 +69,9 @@ public class GameManager : MonoBehaviour
 
     private void ReloadLevel()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -85,5 +79,15 @@ public class GameManager : MonoBehaviour
     {
         _score += increment;
         UIManager.instance.UpdateScoreText(this._score);
+    }
+
+    private void TopScore()
+    {
+        if (_score > PlayerPrefs.GetInt("TopScore", 0))
+        {
+            PlayerPrefs.SetInt("TopScore", _score);
+        }
+
+        Debug.Log("Top score is " + PlayerPrefs.GetInt("TopScore", 0));
     }
 }
