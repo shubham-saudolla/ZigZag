@@ -18,7 +18,13 @@ public class UIManager : MonoBehaviour
 
     public GameObject title;
     public TMP_Text scoreBoard;
-    public GameObject tapButton;
+    public GameObject startTapButton;
+
+    public TMP_Text gameOverText;
+    public GameObject finalScoreBoard;
+    public GameObject retryButton;
+    public TMP_Text finalScoreText;
+    public TMP_Text bestScoreText;
 
     private void Awake()
     {
@@ -33,12 +39,17 @@ public class UIManager : MonoBehaviour
         scoreBoard.text = newScore.ToString();
     }
 
+    public void ScoreFadeOut()
+    {
+        scoreBoard.GetComponent<Animator>().SetTrigger("ScoreFadeOut");
+    }
+
     public void TapButtonClick()
     {
         if (GameManager.instance.gameOver && GameManager.instance.freezeTiles)
         {
             scoreBoard.GetComponent<Animator>().SetTrigger("ScoreFadeIn");
-            tapButton.GetComponent<Animator>().SetTrigger("TapButtonFade");
+            startTapButton.GetComponent<Animator>().SetTrigger("TapButtonFade");
             title.GetComponent<Animator>().SetTrigger("TitleFade");
             StartCoroutine(FadeOutToGame());
         }
@@ -47,7 +58,7 @@ public class UIManager : MonoBehaviour
     public void ArriveIntoGame()
     {
         title.GetComponent<Animator>().SetTrigger("TitleArrive");
-        tapButton.GetComponent<Animator>().SetTrigger("TapButtonArrive");
+        startTapButton.GetComponent<Animator>().SetTrigger("TapButtonArrive");
     }
 
     private IEnumerator FadeOutToGame()
@@ -58,9 +69,30 @@ public class UIManager : MonoBehaviour
         startPanel.SetActive(false);
     }
 
+    public void SetFinalScoreBoard(int score, int bestScore)
+    {
+        finalScoreText.text = score.ToString();
+        bestScoreText.text = bestScore.ToString();
+        ShowEndPanel();
+    }
+
     public void ShowEndPanel()
     {
         endPanel.SetActive(true);
-        scoreBoard.GetComponent<Animator>().SetTrigger("ScoreFadeOut");
+    }
+
+    public void RetryButton()
+    {
+        StartCoroutine(RetryAnimations());
+    }
+
+    private IEnumerator RetryAnimations()
+    {
+        gameOverText.GetComponent<Animator>().SetTrigger("GameOverFadeOut");
+        finalScoreBoard.GetComponent<Animator>().SetTrigger("ScoreBoardFadeOut");
+        retryButton.GetComponent<Animator>().SetTrigger("RetryButtonFadeOut");
+
+        yield return new WaitForSeconds(0.5f);
+        GameManager.instance.ReloadLevel();
     }
 }
