@@ -84,4 +84,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("TopScore", _score);
         }
     }
+
+    public int GetBestScore()
+    {
+        return PlayerPrefs.GetInt("TopScore", 0);
+    }
 }
