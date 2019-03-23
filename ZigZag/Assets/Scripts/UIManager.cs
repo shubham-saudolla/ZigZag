@@ -39,14 +39,12 @@ public class UIManager : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    public void UpdateScoreText(int newScore)
+    public void ArriveIntoGame()
     {
-        scoreBoard.text = newScore.ToString();
-    }
-
-    public void ScoreFadeOut()
-    {
-        scoreBoard.GetComponent<Animator>().SetTrigger("ScoreFadeOut");
+        title.GetComponent<Animator>().SetTrigger("TitleArrive");
+        startTapButton.GetComponent<Animator>().SetTrigger("TapButtonArrive");
+        startBestScore.text = "Best Score : " + GameManager.instance.GetBestScore();
+        startBestScore.GetComponent<Animator>().SetTrigger("StartBestArrive");
     }
 
     public void TapButtonClick()
@@ -61,12 +59,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ArriveIntoGame()
+    public void UpdateScoreText(int newScore)
     {
-        title.GetComponent<Animator>().SetTrigger("TitleArrive");
-        startTapButton.GetComponent<Animator>().SetTrigger("TapButtonArrive");
-        startBestScore.text = "Best Score : " + GameManager.instance.GetBestScore();
-        startBestScore.GetComponent<Animator>().SetTrigger("StartBestArrive");
+        scoreBoard.text = newScore.ToString();
+    }
+
+    public void ScoreFadeOut()
+    {
+        scoreBoard.GetComponent<Animator>().SetTrigger("ScoreFadeOut");
     }
 
     private IEnumerator FadeOutToGame()
@@ -84,12 +84,12 @@ public class UIManager : MonoBehaviour
         ShowEndPanel();
     }
 
-    public void ShowEndPanel()
+    private void ShowEndPanel()
     {
         endPanel.SetActive(true);
     }
 
-    public void RetryButton()
+    private void RetryButton()
     {
         StartCoroutine(RetryAnimations());
     }

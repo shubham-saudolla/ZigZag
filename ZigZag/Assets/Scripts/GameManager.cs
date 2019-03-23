@@ -43,12 +43,26 @@ public class GameManager : MonoBehaviour
         _score = 0;
     }
 
+    public void IncrementScore(int increment)
+    {
+        _score += increment;
+        UIManager.instance.UpdateScoreText(this._score);
+    }
+
     public void EndGame()
     {
         gameOver = true;
         UIManager.instance.ScoreFadeOut();
         TopScore();
         StartCoroutine(SlowDownAndStop());
+    }
+
+    private void TopScore()
+    {
+        if (_score > PlayerPrefs.GetInt("TopScore", 0))
+        {
+            PlayerPrefs.SetInt("TopScore", _score);
+        }
     }
 
     private IEnumerator SlowDownAndStop()
@@ -66,27 +80,13 @@ public class GameManager : MonoBehaviour
         UIManager.instance.SetFinalScoreBoard(_score, PlayerPrefs.GetInt("TopScore", 0));
     }
 
-    public void ReloadLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void IncrementScore(int increment)
-    {
-        _score += increment;
-        UIManager.instance.UpdateScoreText(this._score);
-    }
-
-    private void TopScore()
-    {
-        if (_score > PlayerPrefs.GetInt("TopScore", 0))
-        {
-            PlayerPrefs.SetInt("TopScore", _score);
-        }
-    }
-
     public int GetBestScore()
     {
         return PlayerPrefs.GetInt("TopScore", 0);
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
