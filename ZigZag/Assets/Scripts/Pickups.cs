@@ -15,6 +15,7 @@ public class Pickups : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            AudioManager.instance.Play("Pickup");
             GameManager.instance.IncrementScore(2);
 
             Instantiate(burstParticlesPrefab, transform.position, Quaternion.identity);

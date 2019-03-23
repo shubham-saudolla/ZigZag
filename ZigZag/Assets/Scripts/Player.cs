@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
             Ray downRay = new Ray(transform.position, -Vector3.up);
             if (!Physics.Raycast(downRay, out hit))
             {
+                AudioManager.instance.Play("GameOver");
                 _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
                 GameManager.instance.EndGame();
             }
