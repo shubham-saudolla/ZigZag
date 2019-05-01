@@ -14,7 +14,7 @@ A simple and fun hyper-casual game.
 
 ---
 
-This is a clone of the popular hyper-casual game which employs the concept of object pooling.
+This is a clone of the popular hyper-casual mobile game, ZigZag.
 
 ---
 
