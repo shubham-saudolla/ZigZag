@@ -7,7 +7,7 @@
 
 A simple and fun hyper-casual game.
 
-<a href="" target="_blank"><img src="" width = "769"/></a>
+<a href="https://github.com/shubham-saudolla/media/blob/master/ZigZag/ZigZagScreenshot.png?raw=true" target="_blank"><img src="https://github.com/shubham-saudolla/media/blob/master/ZigZag/ZigZagScreenshot.png?raw=true" height = "500"/></a>
 
 [![Download](https://img.shields.io/static/v1.svg?label=Download&message=Unity&style=for-the-badge&labelColor=000000&color=2eb4ff)](https://unity3d.com)
 </div>
